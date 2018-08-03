@@ -61,26 +61,18 @@
             $('.' + options.collapseClass + ' > ul', this).hide();
 
             $('.' + options.parentClass + ' > a', this).click(function(e) {
-                var posX = $(this).offset().left;
-                var posY = $(this).offset().top;
+                var item = $(this).parent('li');
+                var content = $(this).parent('li').children('ul');
 
-                var clickX = e.pageX - posX;
-                var clickY = e.pageY - posY;
+                item.toggleClass(options.expandClass).toggleClass(options.collapseClass);
 
-                if (clickX <= options.spoilerButtonClickMaxX && clickX >= options.spoilerButtonClickMinX && clickY <= options.spoilerButtonClickMaxY && clickY >= options.spoilerButtonClickMinY) {
-                    var item = $(this).parent('li');
-                    var content = $(this).parent('li').children('ul');
-
-                    item.toggleClass(options.expandClass).toggleClass(options.collapseClass);
-
-                    if (options.slideEffect) {
-                        content.slideToggle();
-                    } else {
-                        content.toggle();
-                    }
-
-                    e.preventDefault();
+                if (options.slideEffect) {
+                    content.slideToggle();
+                } else {
+                    content.toggle();
                 }
+
+                e.preventDefault();
             });
         }
     };

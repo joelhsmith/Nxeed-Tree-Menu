@@ -71,7 +71,7 @@
 
             $('.' + options.collapseClass + ' > ul', this).hide();
 
-            $('.' + options.parentClass + ' > a', this).click(function(e) {
+            $('.' + options.parentClass + ' > a', this).on('click',function(e) {
                 item = $(this).parent('li');
                 content = $(this).parent('li').children('ul');
                 toggler(item, content);

@@ -77,6 +77,17 @@
                 toggler(item, content);
                 e.preventDefault();
             });
+
+            $('.' + options.parentClass + ' > a', this).on('keydown',function(e) {
+                console.log('keydown');
+                if (e.keyCode === 13) {
+                    console.log('13');
+                    item = $(this).parent('li');
+                    content = $(this).parent('li').children('ul');
+                    toggler(item, content);
+                }
+                e.preventDefault();
+            });
         }
     };
 

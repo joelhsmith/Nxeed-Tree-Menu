@@ -1,4 +1,4 @@
-/* jQuery Nxeed's Tree Menu v1 | (c) 2014 Nxeed | https://github.com/nxeed */
+/* jQuery Nxeed's Tree Menu with keyboard accessibility */
 
 (function($) {
     var defaults = {

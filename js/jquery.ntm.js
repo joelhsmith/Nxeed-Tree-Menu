@@ -20,8 +20,19 @@
     var methods = {
         init: function(params) {
             var options = $.extend({}, defaults, params);
-
             var items = this.find('li');
+            var item;
+            var content;
+
+            function toggler(item, content) {
+                item.toggleClass(options.expandClass).toggleClass(options.collapseClass);
+
+                if (options.slideEffect) {
+                    content.slideToggle();
+                } else {
+                    content.toggle();
+                }
+            }
 
             $.each(items, function(num, item) {
                 item = $(item);
@@ -61,17 +72,9 @@
             $('.' + options.collapseClass + ' > ul', this).hide();
 
             $('.' + options.parentClass + ' > a', this).click(function(e) {
-                var item = $(this).parent('li');
-                var content = $(this).parent('li').children('ul');
-
-                item.toggleClass(options.expandClass).toggleClass(options.collapseClass);
-
-                if (options.slideEffect) {
-                    content.slideToggle();
-                } else {
-                    content.toggle();
-                }
-
+                item = $(this).parent('li');
+                content = $(this).parent('li').children('ul');
+                toggler(item, content);
                 e.preventDefault();
             });
         }
